@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Config
-# from .models import db, User
+# from .models import db, Users
 # from flask_migrate import Migrate
 # from flask_login import LoginManager
 
@@ -16,9 +16,11 @@ app.config.from_object(Config)
 #     return User.get(user_id)
 
 from app.main.routes import main
-# from app.search.routes import search
-# from app.users.routes import users
+from app.user.routes import user
+from app.product.routes import product
+from app.cart.routes import cart
 
 app.register_blueprint(main)
-# app.register_blueprint(search)
-# app.register_blueprint(users)
+app.register_blueprint(user)
+app.register_blueprint(product)
+app.register_blueprint(cart)
