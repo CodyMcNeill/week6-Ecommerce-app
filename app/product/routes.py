@@ -1,11 +1,12 @@
 from app import app
 from flask import render_template, request, redirect, url_for, Blueprint
 from .services import getProducts
-products = Blueprint('main', __name__)
+
+product = Blueprint('product', __name__)
 
 
-@products.route('/products')
+@product.route('/products')
 def productsPage():
     content = getProducts()
     
-    return render_template('index.html', content=content)
+    return render_template('products.html', content=content)
