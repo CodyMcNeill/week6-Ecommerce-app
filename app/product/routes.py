@@ -8,5 +8,4 @@ product = Blueprint('product', __name__)
 @product.route('/products')
 def productsPage():
     content = getProducts()
-    
     return render_template('products.html', content=content)
