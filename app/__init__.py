@@ -21,9 +21,11 @@ def load_user(user_id):
     return User.get(user_id)
 
 from app.main.routes import main
-# from app.search.routes import search
-# from app.users.routes import users
+from app.user.routes import user
+from app.product.routes import product
+from app.cart.routes import cart
 
 app.register_blueprint(main)
-# app.register_blueprint(search)
 app.register_blueprint(user)
+app.register_blueprint(product)
+app.register_blueprint(cart)
