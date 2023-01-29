@@ -6,5 +6,6 @@ def getProducts():
     if response.ok:
             data = response.json()
             print(data)
-
+    data.split()
+    print(data)
 getProducts()
