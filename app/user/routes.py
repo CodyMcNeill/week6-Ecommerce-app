@@ -18,6 +18,7 @@ def signUpPage():
             password = form.password.data
 
             user = User(username, email, password)
+
             print(user)
 
             user.saveToDB()
