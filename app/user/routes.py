@@ -26,6 +26,7 @@ def signUpPage():
 
     return render_template("signup.html", form = form)
 
+
 @user.route("/login", methods=["GET", "POST"])
 def loginPage():
     login = LoginForm()
@@ -43,7 +44,7 @@ def loginPage():
                 else:
 
                     print(("wrong password"))
-
+                    
             else:
                 print("user does not exist")
 

@@ -12,6 +12,6 @@ def getProducts():
                 product['price'] = i['price']
                 product['description'] = i['description']
                 product['image'] = i['image']
-                print(product)
+                # print(product)
             return data
 getProducts()
