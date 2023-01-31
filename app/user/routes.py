@@ -1,6 +1,6 @@
 from app import user
 from flask import render_template, request, redirect, url_for, Blueprint
-from .forms import UserCreationForm, LoginForm, EditProfileForm
+from .forms import registrationForm, loginForm
 from .models import User
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -10,7 +10,7 @@ user = Blueprint('user', __name__, template_folder='user_templates')
 
 @user.route("/signup", methods=["GET", "POST"])
 def signUpPage():
-    form = UserCreationForm()
+    form = registrationForm()
     if request.method == "POST":
         if form.validate():
             username = form.username.data
@@ -29,7 +29,7 @@ def signUpPage():
 
 @user.route("/login", methods=["GET", "POST"])
 def loginPage():
-    login = LoginForm()
+    login = loginForm()
 
     if request.method == "POST":
         if login.validate():
@@ -57,37 +57,37 @@ def logoutRoute():
 
     return redirect(url_for('user.loginPage'))
 
-@user.route("/profile", methods=["GET", "POST"])
-def profile():
-    form = EditProfileForm()
-    user = User.query.filter_by(id = current_user.id).first()
-    return render_template("profile.html", form = form, current_user = current_user)
+# @user.route("/profile", methods=["GET", "POST"])
+# def profile():
+#     form = EditProfileForm()
+#     user = User.query.filter_by(id = current_user.id).first()
+#     return render_template("profile.html", form = form, current_user = current_user)
 
-@user.route("/editprofile", methods=["GET", "POST"])
-@login_required
-def editProfileForm():
-    form = EditProfileForm()
-    user = User.query.filter_by(id = current_user.id).first()
-    if request.method == "POST":
-        username = form.username.data
-        email = form.email.data
-        password = form.password.data
-        if username != "":
-            user.username = username
-        if email != "":
-            user.email = email
-        if password != "":
-            user.password = password
-        user.saveChanges()
-        return render_template('editdelete.html', form = form, current_user = current_user )
-    return render_template('editdelete.html', form = form, current_user = current_user )
+# @user.route("/editprofile", methods=["GET", "POST"])
+# @login_required
+# def editProfileForm():
+#     form = EditProfileForm()
+#     user = User.query.filter_by(id = current_user.id).first()
+#     if request.method == "POST":
+#         username = form.username.data
+#         email = form.email.data
+#         password = form.password.data
+#         if username != "":
+#             user.username = username
+#         if email != "":
+#             user.email = email
+#         if password != "":
+#             user.password = password
+#         user.saveChanges()
+#         return render_template('editdelete.html', form = form, current_user = current_user )
+#     return render_template('editdelete.html', form = form, current_user = current_user )
 
-@user.route("/profile/editdelete", methods=["GET", "POST"])
-@login_required
-def delProfile():
-    user = User.query.filter_by(id = current_user.id).first()
-    if request.method == "POST":
-        if user:
-            user.deleteFromDB()
-            return redirect(url_for("user.loginPage"))
-    return render_template("editdelete.html") 
+# @user.route("/profile/editdelete", methods=["GET", "POST"])
+# @login_required
+# def delProfile():
+#     user = User.query.filter_by(id = current_user.id).first()
+#     if request.method == "POST":
+#         if user:
+#             user.deleteFromDB()
+#             return redirect(url_for("user.loginPage"))
+#     return render_template("editdelete.html") 

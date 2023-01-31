@@ -18,7 +18,7 @@ login_manager.login_view = "user.loginPage"
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.get(user_id)
+    return User.query.get(user_id)
 
 from app.main.routes import main
 from app.user.routes import user
