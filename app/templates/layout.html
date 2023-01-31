@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BC Software Service</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/app/static/main.css">
 </head>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -21,10 +22,10 @@
           <a class="nav-link" href="{{ url_for('product.productsPage') }}">Products</a>
         </li>
         <li class="nav-item nav-right">
-          <a class="nav-link" href="{{ url_for('user.loginUserPage') }}">Log In</a>
+          <a class="nav-link" href="{{ url_for('user.loginPage') }}">Log In</a>
         </li>
         <li class="nav-item nav-right">
-          <a class="nav-link" href="{{ url_for('user.registerUserPage') }}">Sign Up</a>
+          <a class="nav-link" href="{{ url_for('user.signUpPage') }}">Sign Up</a>
         </li>
       </ul>
     </div>
