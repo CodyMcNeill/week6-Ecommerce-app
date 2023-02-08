@@ -5,15 +5,17 @@ def getProducts():
     response = requests.get(url)
     if response.ok:
             data = response.json()
+            # print(len(data))
             return data
+
 # getProducts()
 
-def getProductID():
-    data = getProducts()
-    for i in data:
-        prod_id = i['id']
-        return prod_id
-        # print(prod_id)
-    # print(data)
-            
-# getProductID()
+def getProductInfo(prod_id):
+    url = f'https://fakestoreapi.com/products/{prod_id}'
+    response = requests.get(url)
+    if response.ok:
+        data = response.json()
+        # print(data['id'])
+        return data
+
+# getProductInfo(1)
